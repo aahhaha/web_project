@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <title>DEXTER - Killers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script defer src="theme.js"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="Home.html">DEXTER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Killers.html">Killers</a></li>
+                <li class="nav-item"><a class="nav-link" href="Case_Files.html">Case Files</a></li>
+                <li class="nav-item"><a class="nav-link" href="Analysis.html">Analysis</a></li>
+                <li class="nav-item"><a class="nav-link" href="Form.html">Access Terminal</a></li>
+            </ul>
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm ms-3">Toggle Theme</button>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-fill">
+    <div class="container text-center my-4">
+        <h1 class="fw-bold">Infamous Killers</h1>
+        <p class="text-muted">Profiles of the most notorious figures</p>
+    </div>
+
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Dexter -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img
+                            src="https://images.steamusercontent.com/ugc/38941270896180288/30175D423D8E0811A3A470CCDB8789783238B6CE/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false"
+                            alt="Dexter Morgan"
+                            class="avatar p-3"
+                            referrerpolicy="no-referrer"
+                            loading="lazy"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Dexter Morgan</h5>
+                        <p class="card-text">The Bay Harbor Butcher — a code-bound vigilante.</p>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#dexterModal">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brian -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img
+                            src="https://wallpaperaccess.com/full/16486779.jpg"
+                            alt="Brian Moser"
+                            class="avatar p-3"
+                            referrerpolicy="no-referrer"
+                            loading="lazy"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Brian Moser</h5>
+                        <p class="card-text">The Ice Truck Killer — chilling staged scenes.</p>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brianModal">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arthur -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img
+                            src="https://static0.srcdn.com/wordpress/wp-content/uploads/2021/07/John-Lithgow-Dexter-Arthur-Mitchell-big-villain-problem.jpg"
+                            alt="Arthur Mitchell"
+                            class="avatar p-3"
+                            referrerpolicy="no-referrer"
+                            loading="lazy"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Arthur Mitchell</h5>
+                        <p class="card-text">The Trinity Killer — ritualized cycles.</p>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#arthurModal">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Miguel -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card h-100 text-center shadow-sm">
+                    <img
+                            src="https://i.pinimg.com/1200x/2c/4f/27/2c4f27fcffa1bcf0bd0a9efd7a950c57.jpg"
+                            alt="Miguel Prado"
+                            class="avatar p-3"
+                            referrerpolicy="no-referrer"
+                            loading="lazy"
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">Miguel Prado</h5>
+                        <p class="card-text">ADA turned vigilante — consumed by power.</p>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#miguelModal">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Modals -->
+<div class="modal fade" id="dexterModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Dexter Morgan</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body"><p>Miami Metro blood analyst by day; code-driven hunter by night.</p></div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div></div>
+</div>
+
+<div class="modal fade" id="brianModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Brian Moser</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body"><p>Meticulous staging, ice-cold signatures — Dexter’s estranged brother.</p></div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div></div>
+</div>
+
+<div class="modal fade" id="arthurModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Arthur Mitchell</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body"><p>Charismatic family man hiding a ritualized cycle of murders.</p></div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div></div>
+</div>
+
+<div class="modal fade" id="miguelModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title">Miguel Prado</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body"><p>Power, influence, and a slide into darkness beyond the law.</p></div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div></div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>&copy; 2025 DEXTER. Aibyn Farkhad Assem.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #fafafa;
+    color: #111;
+    text-align: center;
+    transition: background 0.5s, color 0.5s;
+}
+
+[data-bs-theme="dark"] body {
+    background-color: #1a1a1a;
+    color: #eee;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 200px;
+    padding: 15px;
+    border: 1px solid #a83232;
+    border-radius: 10px;
+    text-align: center;
+    background: white;
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
+}
+
+[data-bs-theme="dark"] .card {
+    background: #222;
+    border-color: #b64b4b;
+    box-shadow: 0 0 10px rgba(255,0,0,0.2);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background: #a83232;
+    color: white;
+    border-radius: 5px;
+}
+.card a:hover {
+    background: #912d2d;
+}
+
+.carousel-item img {
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <title>DEXTER - Access Terminal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script defer src="theme.js"></script>
+    <style>
+        body {
+            transition: background 0.5s, color 0.5s;
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            border-radius: 12px;
+            transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+        }
+
+        [data-bs-theme="dark"] body {
+            background: #0b0b0b;
+            color: #f5f5f5;
+        }
+        [data-bs-theme="dark"] .login-box {
+            background: #1c1c1c;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+        [data-bs-theme="dark"] label {
+            color: #fff;
+        }
+        [data-bs-theme="dark"] input {
+            background: #0d0d0d !important;
+            color: #fff !important;
+            border: 1px solid #a83232 !important;
+        }
+        [data-bs-theme="dark"] input:focus {
+            box-shadow: 0 0 5px #a83232;
+        }
+
+        [data-bs-theme="light"] body {
+            background: #f9f9f9;
+            color: #212529;
+        }
+        [data-bs-theme="light"] .login-box {
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+        [data-bs-theme="light"] label {
+            color: #212529;
+        }
+        [data-bs-theme="light"] input {
+            background: #f8f8f8 !important;
+            color: #212529 !important;
+            border: 1px solid #a83232 !important;
+        }
+        [data-bs-theme="light"] input:focus {
+            box-shadow: 0 0 5px #a83232;
+        }
+
+        .login-box h3 {
+            color: #a83232;
+            font-weight: bold;
+        }
+        .btn-danger {
+            background-color: #a83232;
+            border: none;
+        }
+        .btn-danger:hover {
+            background-color: #912d2d;
+        }
+        .error {
+            color: #ff8080;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="Home.html">DEXTER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="Killers.html">Killers</a></li>
+                <li class="nav-item"><a class="nav-link" href="Case_Files.html">Case Files</a></li>
+                <li class="nav-item"><a class="nav-link" href="Analysis.html">Analysis</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Form.html">Access Terminal</a></li>
+            </ul>
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm ms-3">Toggle Theme</button>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-fill">
+    <div class="login-box shadow">
+        <h3 class="text-center mb-4">Miami Metro Access</h3>
+        <form id="loginForm" novalidate>
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input id="name" type="text" class="form-control" required>
+                <div id="errName" class="error"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input id="email" type="email" class="form-control" required>
+                <div id="errEmail" class="error"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input id="pass" type="password" class="form-control" required>
+                <div id="errPass" class="error"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input id="confirm" type="password" class="form-control" required>
+                <div id="errConfirm" class="error"></div>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Access Terminal</button>
+        </form>
+    </div>
+</main>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>&copy; 2025 DEXTER. Aibyn Farkhad Assem.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        let valid = true;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const pass = document.getElementById('pass').value;
+        const confirm = document.getElementById('confirm').value;
+
+        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+        if (!name) { errName.textContent = 'Name required.'; valid = false; }
+        if (!email || !email.includes('@')) { errEmail.textContent = 'Invalid email.'; valid = false; }
+        if (pass.length < 6) { errPass.textContent = 'Password must be ≥6 characters.'; valid = false; }
+        if (pass !== confirm) { errConfirm.textContent = 'Passwords do not match.'; valid = false; }
+
+        if (valid) alert(`Access Granted, Agent ${name.toUpperCase()}.`);
+    });
+</script>
+</body>
+</html>
