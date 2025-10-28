@@ -7,29 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script defer src="theme.js"></script>
     <style>
-        body {
-            transition: background 0.5s, color 0.5s;
-        }
-        #darkCarousel {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        #darkCarousel .carousel-item {
-            height: 600px;
-        }
-        #darkCarousel .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .timestamp {
-            font-weight: 600;
-            color: #a83232;
-        }
-        .crime-scene {
-            background: #1a0000 !important;
-            color: white;
-        }
+        body { transition: background 0.5s, color 0.5s; }
+        #darkCarousel { max-width: 1000px; margin: 0 auto; }
+        #darkCarousel .carousel-item { height: 600px; }
+        #darkCarousel .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        .timestamp { font-weight: 600; color: #a83232; }
     </style>
 </head>
 
@@ -58,12 +40,15 @@
     <p class="lead">Welcome to Dexter’s investigation dashboard.</p>
     <div class="timestamp my-3" id="timestamp"></div>
 
-    <button id="crimeMode" class="btn btn-danger mb-4">Toggle Crime Scene Mode</button>
+    <div class="my-4">
+        <h4 id="statusText" class="fw-bold text-danger">Status: Normal</h4>
+        <button id="alertToggle" class="btn btn-outline-danger">Kill Mode</button>
+    </div>
 
     <div id="darkCarousel" class="carousel slide container mb-5" data-bs-ride="carousel">
         <div class="carousel-inner rounded shadow">
             <div class="carousel-item active">
-                <img src="https://images.steamusercontent.com/ugc/38941270896180288/30175D423D8E0811A3A470CCDB8789783238B6CE/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Dexter Morgan" />
+                <img src="https://images.steamusercontent.com/ugc/38941270896180288/30175D423D8E0811A3A470CCDB8789783238B6CE/" alt="Dexter Morgan" />
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Dexter Morgan</h5>
                     <p>“Bay Harbor Butcher” — a code-bound vigilante.</p>
@@ -100,12 +85,22 @@
     </div>
 </main>
 
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-    <p>&copy; 2025 DEXTER. Aibyn Farkhad Assem.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    $(function(){
+        $("#alertToggle").click(function(){
+            const body = $("body");
+            const status = $("#statusText");
+            if (body.hasClass("alert-mode")) {
+                body.removeClass("alert-mode").css({"background":"","filter":""});
+                status.text("Status: Normal").css("color","#a83232");
+            } else {
+                body.addClass("alert-mode").css({"background":"#2b0000","filter":"saturate(160%)"});
+                status.text("Status: Kill Mode").css("color","#ff3b3b");
+            }
+        });
+    });
+
     function updateTime() {
         const t = new Date();
         document.getElementById('timestamp').textContent =
@@ -113,9 +108,12 @@
     }
     setInterval(updateTime, 1000);
     updateTime();
-
-    document.getElementById('crimeMode').onclick = () =>
-        document.body.classList.toggle('crime-scene');
 </script>
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+    <p>&copy; 2025 DEXTER. Aibyn Farkhad Assem.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

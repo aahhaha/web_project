@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta charset="UTF-8" />
     <title>DEXTER - Access Terminal</title>
@@ -8,72 +8,85 @@
     <script defer src="theme.js"></script>
     <style>
         body {
-            transition: background 0.5s, color 0.5s;
+            background: linear-gradient(to bottom, #1a1a1a, #000);
+            color: white;
         }
-
-        .login-box {
+        .form-box {
             max-width: 400px;
-            margin: 80px auto;
+            margin: 100px auto;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 30px;
-            border-radius: 12px;
-            transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+            box-shadow: 0 0 25px rgba(255,0,0,0.2);
         }
-
-        [data-bs-theme="dark"] body {
-            background: #0b0b0b;
-            color: #f5f5f5;
+        .form-control, .form-select {
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
         }
-        [data-bs-theme="dark"] .login-box {
-            background: #1c1c1c;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-        }
-        [data-bs-theme="dark"] label {
-            color: #fff;
-        }
-        [data-bs-theme="dark"] input {
-            background: #0d0d0d !important;
-            color: #fff !important;
-            border: 1px solid #a83232 !important;
-        }
-        [data-bs-theme="dark"] input:focus {
+        .form-control:focus {
+            background-color: rgba(255,255,255,0.15);
+            border-color: #a83232;
             box-shadow: 0 0 5px #a83232;
         }
-
-        [data-bs-theme="light"] body {
-            background: #f9f9f9;
-            color: #212529;
-        }
-        [data-bs-theme="light"] .login-box {
-            background: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.15);
-        }
-        [data-bs-theme="light"] label {
-            color: #212529;
-        }
-        [data-bs-theme="light"] input {
-            background: #f8f8f8 !important;
-            color: #212529 !important;
-            border: 1px solid #a83232 !important;
-        }
-        [data-bs-theme="light"] input:focus {
-            box-shadow: 0 0 5px #a83232;
-        }
-
-        .login-box h3 {
-            color: #a83232;
-            font-weight: bold;
-        }
-        .btn-danger {
+        .btn-access {
             background-color: #a83232;
             border: none;
         }
-        .btn-danger:hover {
-            background-color: #912d2d;
+        .btn-access:hover {
+            background-color: #8e2727;
         }
-        .error {
-            color: #ff8080;
-            font-size: 0.9em;
+        #timeNow {
+            color: #ff4c4c;
+            font-weight: bold;
         }
+        .alert-box {
+            display: none;
+            margin-top: 20px;
+            background: rgba(255,0,0,0.1);
+            border: 1px solid rgba(255,0,0,0.3);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .form-select {
+            background-color: #1a1a1a !important;
+            color: #fff !important;
+            border: 1px solid #a83232 !important;
+        }
+
+        .form-select option {
+            background-color: #1a1a1a !important;
+            color: #fff !important;
+        }
+        [data-bs-theme="light"] body {
+            background: linear-gradient(to bottom, #ffffff, #e9e9e9);
+            color: #111;
+        }
+        [data-bs-theme="light"] .form-box {
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        [data-bs-theme="light"] .form-control,
+        [data-bs-theme="light"] .form-select {
+            background-color: rgba(0,0,0,0.05);
+            color: #111;
+        }
+
+        [data-bs-theme="dark"] body {
+            background: linear-gradient(to bottom, #1a1a1a, #000);
+            color: #f8f8f8;
+        }
+        [data-bs-theme="dark"] .form-box {
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 0 25px rgba(255,0,0,0.2);
+        }
+        [data-bs-theme="dark"] .form-control,
+        [data-bs-theme="dark"] .form-select {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
     </style>
 </head>
 
@@ -98,31 +111,32 @@
 </nav>
 
 <main class="flex-fill">
-    <div class="login-box shadow">
-        <h3 class="text-center mb-4">Miami Metro Access</h3>
-        <form id="loginForm" novalidate>
+    <div class="form-box">
+        <h2 class="text-center text-danger mb-4 fw-bold">Access Terminal</h2>
+        <form id="accessForm">
             <div class="mb-3">
-                <label class="form-label">Full Name</label>
-                <input id="name" type="text" class="form-control" required>
-                <div id="errName" class="error"></div>
+                <label for="username" class="form-label">Operator ID</label>
+                <input type="text" id="username" class="form-control" placeholder="Enter your ID" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input id="email" type="email" class="form-control" required>
-                <div id="errEmail" class="error"></div>
+                <label for="password" class="form-label">Security Key</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter key" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input id="pass" type="password" class="form-control" required>
-                <div id="errPass" class="error"></div>
+                <label for="accessLevel" class="form-label">Access Level</label>
+                <select id="accessLevel" class="form-select" required>
+                    <option value="">Select level</option>
+                    <option value="1">Level 1 - Visitor</option>
+                    <option value="2">Level 2 - Analyst</option>
+                    <option value="3">Level 3 - Chief Investigator</option>
+                </select>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Confirm Password</label>
-                <input id="confirm" type="password" class="form-control" required>
-                <div id="errConfirm" class="error"></div>
-            </div>
-            <button type="submit" class="btn btn-danger w-100">Access Terminal</button>
+            <button type="submit" class="btn btn-access w-100">Grant Access</button>
         </form>
+
+        <div id="alertBox" class="alert-box text-center text-danger fw-semibold"></div>
+
+        <p class="text-center mt-4">Session Time: <span id="timeNow"></span></p>
     </div>
 </main>
 
@@ -131,25 +145,29 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    const form = document.getElementById('loginForm');
-    form.addEventListener('submit', e => {
+    $("#accessForm").on("submit", function(e) {
         e.preventDefault();
-        let valid = true;
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const pass = document.getElementById('pass').value;
-        const confirm = document.getElementById('confirm').value;
+        const user = $("#username").val().trim();
+        const pass = $("#password").val().trim();
+        const level = $("#accessLevel").val();
 
-        document.querySelectorAll('.error').forEach(el => el.textContent = '');
+        if (!user || !pass || !level) {
+            $("#alertBox").text("Access Denied: Missing credentials.").fadeIn(400);
+            return;
+        }
 
-        if (!name) { errName.textContent = 'Name required.'; valid = false; }
-        if (!email || !email.includes('@')) { errEmail.textContent = 'Invalid email.'; valid = false; }
-        if (pass.length < 6) { errPass.textContent = 'Password must be ≥6 characters.'; valid = false; }
-        if (pass !== confirm) { errConfirm.textContent = 'Passwords do not match.'; valid = false; }
-
-        if (valid) alert(`Access Granted, Agent ${name.toUpperCase()}.`);
+        if (pass === "bloodcode") {
+            $("#alertBox").css("color", "#32cd32").text(`Access Granted: Welcome, ${user}.`).fadeIn(400);
+        } else {
+            $("#alertBox").css("color", "#ff4c4c").text("Access Denied: Invalid Security Key.").fadeIn(400);
+        }
     });
+
+    setInterval(() => {
+        $("#timeNow").text(new Date().toLocaleString());
+    }, 1000);
 </script>
 </body>
 </html>
